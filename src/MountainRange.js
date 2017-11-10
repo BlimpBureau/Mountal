@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Mountain from './Mountal';
+import Mountain from './Mountain';
 import elementResizeDetector from "element-resize-detector";
 
 function getRandomArbitrary(min, max) {
@@ -13,7 +13,7 @@ class MountainRange extends Component {
   }
 
   static defaultProps = {
-    numberOfMountains: 15
+    numberOfMountains: 20
   }
 
 	constructor(props) {
@@ -123,8 +123,10 @@ class MountainRange extends Component {
           color: "#F07818",
           shadowColor: "#F0A830",
           fadeOutColor: "#8400ff",
-          levels: 3 + parseInt(((mountain.depth  + 1)/ this.props.numberOfMountains) * 3)
+          levels: 4 + parseInt(((mountain.depth  + 1)/ this.props.numberOfMountains) * 3)
         }
+
+        // console.log("levels", mountainProps.levels);
 
         return (
           <Mountain {...mountainProps} z={mountain.depth / this.props.numberOfMountains}/>
