@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import MountalGenerator from './generator';
 import elementResizeDetector from "element-resize-detector";
 
@@ -16,12 +17,15 @@ function mapPointsToCanvas(points, canvasWidth, canvasHeight) {
     }, "");
 }
 
-var mountalGenerator = new MountalGenerator(1, 4);
-var points = mountalGenerator.generatePoints([{x: 0, y: 0}, {x: 1, y: 0}]);
-
-console.log(points);
-
 class Mountal extends Component {
+  static propTypes = {
+    levels: PropTypes.number
+  }
+
+  static defaultProps = {
+    levels: 4
+  }
+
   constructor(props) {
     super(props);
 
@@ -29,6 +33,9 @@ class Mountal extends Component {
       width: this.props.width || "100%",
       height: this.props.width || "100%"
     }
+
+    let mountalGenerator = new MountalGenerator(1, props.levels);
+    this.points = mountalGenerator.generatePoints([{x: 0, y: 0}, {x: 1, y: 0}]);
 
     // Create a elementResizeDetector.
     this.handleResize = this.handleResize.bind(this);
@@ -71,12 +78,12 @@ class Mountal extends Component {
 
     let canvasWidth = this.state.width;
     let canvasHeight = this.state.height;
-    let polygonPoints = `0,${canvasHeight} ` + mapPointsToCanvas(points, canvasWidth, canvasHeight) + `${canvasWidth},${canvasHeight}`;
+    let polygonPoints = `0,${canvasHeight} ` + mapPointsToCanvas(this.points, canvasWidth, canvasHeight) + `${canvasWidth},${canvasHeight}`;
 
     // console.log(canvasWidth);
     // console.log(canvasHeight);
 
-    let midPoint = points[Math.floor(points.length/2)];
+    let midPoint = this.points[Math.floor(this.points.length/2)];
     let randomPath = [midPoint];
     let iterations = 20;
     for (var i = 0; i < iterations; i++) {
@@ -107,9 +114,9 @@ class Mountal extends Component {
           </clipPath>
           </defs>
 
-          <polygon fill="#3ae5d3" points={polygonPoints}/>
-          <polygon clipPath={"url(#mountain" + (this.props.index)+ ")"} fill="#146d64" points={shadowPolygonPoints}/>
-          <polygon style={{opacity:(1 - this.props.z)}} fill="#ffffff" points={polygonPoints}/>
+          <polygon fill={this.props.color || "#3ae5d3"} points={polygonPoints}/>
+          <polygon clipPath={"url(#mountain" + (this.props.index)+ ")"} fill={this.props.shadowColor || "#146d64"} points={shadowPolygonPoints}/>
+          <polygon style={{opacity:(1 - this.props.z)}} fill={this.props.fadeOutColor || "#146d64"} points={polygonPoints}/>
         </svg>
       </div>
     );

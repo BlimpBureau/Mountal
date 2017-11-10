@@ -6,9 +6,14 @@ body {
 	margin: 0;
 	padding: 0;
 	/*background-color: #fffbb3;*/
+	background-color: #FCEBB6;
+
+	/*background-image: linear-gradient(180deg, #fcebb6 0%, #edc597 20%, #dd8589 40%, #d36292 60%, #8a57a4 80%, #3d487d 100%);*/
 	
+	/*
 	background-color: #21D4FD;
 	background-image: linear-gradient(180deg, #21D4FD 0%, #B721FF 100%);
+	*/
 }
 
 .App {

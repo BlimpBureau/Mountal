@@ -16,8 +16,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Blimp color="#093531"/>
-        <MountainRange style={{width: "100%", height: "100%"}}/>
+        <Blimp color="#280945"/>
+        <MountainRange erd={this.erd}/>
       </div>
     );
   }

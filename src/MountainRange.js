@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Mountain from './Mountal';
-// import MountalGenerator from './generator';
 import elementResizeDetector from "element-resize-detector";
-import gaussian from "gaussian";
 
 function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
@@ -15,7 +13,7 @@ class MountainRange extends Component {
   }
 
   static defaultProps = {
-    numberOfMountains: 10
+    numberOfMountains: 15
   }
 
 	constructor(props) {
@@ -23,18 +21,11 @@ class MountainRange extends Component {
 
     this.state = {
       measured: false,
-      width: window.innerWidth,
-      height: window.innerHeight
+      width: this.props.width || window.innerWidth,
+      height: this.props.height || window.innerHeight
     }
 
 		this.erd = props.erd || elementResizeDetector({strategy: "scroll"});
-
-    let mid = parseInt(this.props.numberOfMountains / 2, 10);
-    this.horizontalDistribution = gaussian(50, 200, 100);
-    this.depthDistribution = gaussian(0,1);
-
-    // this.mountalGenerator = new MountalGenerator(0.5, 4);
-    // this.points = this.mountalGenerator.generatePoints([{x: 0, y: 0}, {x: 1, y: 0}], null, 4);
 
     this.mountains = new Array(this.props.numberOfMountains);
     for(let i = 0; i < this.props.numberOfMountains; i++) {
@@ -115,16 +106,24 @@ class MountainRange extends Component {
           height: height,
           backgroundColor: "transparent",
           transform: "scale(" + mountain.depth / this.props.numberOfMountains + ")",
-          transformOrigin: "bottom right",
+          transformOrigin: "bottom left",
           zIndex: mountain.depth
         }
 
         let mountainProps = {
+          erd: this.erd,
           key: index,
           index: index,
           style: mountainStyle,
           width: width,
-          height: height
+          height: height,
+          // color: "#F07818",
+          // shadowColor: "#F0A830",
+          // fadeOutColor: "#8a57a4",
+          color: "#F07818",
+          shadowColor: "#F0A830",
+          fadeOutColor: "#8400ff",
+          levels: 3 + parseInt(((mountain.depth  + 1)/ this.props.numberOfMountains) * 3)
         }
 
         return (
