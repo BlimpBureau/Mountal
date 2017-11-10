@@ -7,8 +7,8 @@ export default function(range, levels) {
 		let newP = {};
 		let midX = (p1.x + p2.x)/2;
 		let diffY = Math.abs(p1.y - p2.y);
-		let midY = (p1.y + p2.y)/2;
-		let currentRange = range / (2 ** (levels - level - 1));
+		// let midY = (p1.y + p2.y)/2;
+		// let currentRange = range / (2 ** (levels - level - 1));
 		var korv = (0.4 / (2 ** (levels - level - 1)));
 		let displacement = levels === level ? 1 : getRandomArbitrary(Math.min(p1.y, p2.y) + diffY*korv, Math.max(p1.y, p2.y) - diffY*korv);
 
