@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Mountain from './Mountain';
-
-function getRandomArbitrary(min, max) {
-  return Math.random() * (max - min) + min;
-}
+import {getRandomArbitrary} from "./utils";
 
 class MountainRange extends Component {
   static propTypes = {

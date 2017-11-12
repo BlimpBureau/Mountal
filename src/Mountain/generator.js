@@ -1,6 +1,4 @@
-function getRandomArbitrary(min, max) {
- 	return Math.random() * (max - min) + min;
-}
+import {getRandomArbitrary} from "../utils";
 
 export default function(range, levels) {
 	function addPoint (p1, p2, groundY, level) {

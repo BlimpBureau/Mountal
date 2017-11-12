@@ -1,18 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import MountalGenerator from './generator';
+import {getRandomArbitrary, mapPointsToCanvas} from "../utils";
   
-let offsetHeight = 50;
-
-function getRandomArbitrary(min, max) {
-  return Math.random() * (max - min) + min;
-}
-
-function mapPointsToCanvas(points, canvasWidth, canvasHeight) {
-  return points.reduce((string, point) => {
-      return string + point.x*canvasWidth + "," + ((canvasHeight - offsetHeight) - point.y * (canvasHeight - 1.5*offsetHeight)) + " ";
-    }, "");
-}
+const offsetHeight = 50;
 
 class Mountal extends Component {
   static propTypes = {
@@ -42,7 +33,7 @@ class Mountal extends Component {
     let aspectRatio = this.props.aspectRatio;
     let canvasWidth = 1000;
     let canvasHeight = canvasWidth * aspectRatio;
-    let polygonPoints = `0,${canvasHeight} ` + mapPointsToCanvas(this.points, canvasWidth, canvasHeight) + `${canvasWidth},${canvasHeight}`;
+    let polygonPoints = `0,${canvasHeight} ` + mapPointsToCanvas(this.points, canvasWidth, canvasHeight, offsetHeight) + `${canvasWidth},${canvasHeight}`;
 
     console.log(aspectRatio);
     console.log(canvasWidth);
@@ -78,7 +69,7 @@ class Mountal extends Component {
 
     // console.log(randomPath);
 
-    let shadowPolygonPoints = mapPointsToCanvas(randomPath, canvasWidth, canvasHeight);
+    let shadowPolygonPoints = mapPointsToCanvas(randomPath, canvasWidth, canvasHeight, offsetHeight);
     shadowPolygonPoints += ` ${canvasWidth},${canvasHeight} ${canvasWidth},0`;
 
     //mint
