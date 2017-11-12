@@ -45,7 +45,7 @@ class MountainRange extends Component {
   render() {
     let mountainRangeStyle = {
       width: "100%",
-      height: "50%",
+      height: "100%",
       position: "absolute",
       top: 0,
       left: 0
@@ -59,12 +59,13 @@ class MountainRange extends Component {
           position: "absolute",
           bottom: 0,
           left: mountain.x + "%",
-          width: width + "%",
-          height: height + "%",
+          // width: width + "%",
+          // height: height + "%",
           backgroundColor: "transparent",
-          transform: "scale(" + mountain.depth / this.props.numberOfMountains + ")",
+          transform: "scale(" + (mountain.depth + 1) / this.props.numberOfMountains + ")",
           transformOrigin: "bottom right",
-          zIndex: mountain.depth
+          zIndex: mountain.depth,
+          overflowY: "hidden"
         }
 
         let mountainProps = {

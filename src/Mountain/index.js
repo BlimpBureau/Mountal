@@ -29,16 +29,7 @@ class Mountal extends Component {
     this.points = mountalGenerator.generatePoints([{x: 0, y: 0}, {x: 1, y: 0}]);
   }
 
-  render() {
-    let aspectRatio = this.props.aspectRatio;
-    let canvasWidth = 1000;
-    let canvasHeight = canvasWidth * aspectRatio;
-    let polygonPoints = `0,${canvasHeight} ` + mapPointsToCanvas(this.points, canvasWidth, canvasHeight, offsetHeight) + `${canvasWidth},${canvasHeight}`;
-
-    console.log(aspectRatio);
-    console.log(canvasWidth);
-    console.log(canvasHeight);
-
+  getShadowPolygonPoints(canvasWidth, canvasHeight) {
     let midPoint = this.points[Math.floor(this.points.length/2)];
     let randomPath = [midPoint];
     let iterations = 20;
@@ -51,26 +42,22 @@ class Mountal extends Component {
       newPoint.x = previousPoint.x + getRandomArbitrary(-0.025, 0.05);
 
       randomPath.push(newPoint);
-
-      // if(Math.random() > 0.8) {
-      //     let previousPoint = newPoint;
-      //     let newPoint2 = {}
-      //     let newPoint3 = {}
-      //     newPoint2.y = previousPoint.y + 1.6*getRandomArbitrary(1/iterations, 2/iterations);
-      //     newPoint2.x = previousPoint.x + getRandomArbitrary(-0.025, 0.05);
-      //     newPoint3.y =     newPoint2.y - 1.6*getRandomArbitrary(1/iterations, 2/iterations) / 2;
-      //     newPoint3.x =     newPoint2.x + getRandomArbitrary(-0.025, 0.05);
-      //     numberOfRandomPoints += 2;
-
-      //     randomPath.push(newPoint2);
-      //     randomPath.push(newPoint3);
-      // }
     }
-
-    // console.log(randomPath);
 
     let shadowPolygonPoints = mapPointsToCanvas(randomPath, canvasWidth, canvasHeight, offsetHeight);
     shadowPolygonPoints += ` ${canvasWidth},${canvasHeight} ${canvasWidth},0`;
+    return shadowPolygonPoints;
+  }
+
+  render() {
+    let aspectRatio = this.props.aspectRatio;
+    let canvasWidth = 1000;
+    let canvasHeight = canvasWidth * aspectRatio;
+    let polygonPoints = `0,${canvasHeight} ` + mapPointsToCanvas(this.points, canvasWidth, canvasHeight, offsetHeight) + `${canvasWidth},${canvasHeight}`;
+
+    console.log(aspectRatio);
+    console.log(canvasWidth);
+    console.log(canvasHeight);
 
     //mint
     //#1dbcaf
@@ -85,8 +72,8 @@ class Mountal extends Component {
           </defs>
 
           <polygon fill={this.props.color} points={polygonPoints}/>
-          <polygon clipPath={"url(#mountain" + (this.props.index)+ ")"} fill={this.props.shadowColor} points={shadowPolygonPoints}/>
-          <polygon style={{opacity:(1 - this.props.z)}} fill={this.props.fadeOutColor} points={polygonPoints}/>
+          {this.props.shadowColor && <polygon clipPath={"url(#mountain" + (this.props.index)+ ")"} fill={this.props.shadowColor} points={this.getShadowPolygonPoints(canvasWidth, canvasHeight)}/>}
+          {this.props.fadeOutColor && <polygon style={{opacity:(1 - this.props.z)}} fill={this.props.fadeOutColor} points={polygonPoints}/>}
         </svg>
       </div>
     );
