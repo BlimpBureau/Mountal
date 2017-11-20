@@ -10,6 +10,10 @@ class App extends Component {
       <div className="App">
         <Blimp color="#280945"/>
         <MountainRange erd={this.erd}/>
+        <MountainRange erd={this.erd}/>
+        <MountainRange erd={this.erd}/>
+        <MountainRange erd={this.erd}/>
+        <MountainRange erd={this.erd}/>
       </div>
     );
   }

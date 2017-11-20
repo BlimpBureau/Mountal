@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import MountalGenerator from './generator';
 import {getRandomArbitrary, mapPointsToCanvas} from "../utils";
   
-const offsetHeight = 50;
+const offsetHeight = 200;
 
 class Mountal extends Component {
   static propTypes = {
