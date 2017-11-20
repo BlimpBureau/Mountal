@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import MountalGenerator from './generator';
 import {getRandomArbitrary, mapPointsToCanvas} from "../utils";
   
-const offsetHeight = 200;
+const offsetHeight = 0;
 
 class Mountal extends Component {
   static propTypes = {
@@ -55,9 +55,9 @@ class Mountal extends Component {
     let canvasHeight = canvasWidth * aspectRatio;
     let polygonPoints = `0,${canvasHeight} ` + mapPointsToCanvas(this.points, canvasWidth, canvasHeight, offsetHeight) + `${canvasWidth},${canvasHeight}`;
 
-    console.log(aspectRatio);
-    console.log(canvasWidth);
-    console.log(canvasHeight);
+    // console.log(aspectRatio);
+    // console.log(canvasWidth);
+    // console.log(canvasHeight);
 
     //mint
     //#1dbcaf

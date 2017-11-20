@@ -39,15 +39,15 @@ class MountainRange extends Component {
       };
     };
 
-    console.log(this.mountains);
+    // console.log(this.mountains);
 	}
 
   render() {
     let mountainRangeStyle = {
       width: "100%",
-      height: "100%",
+      height: "80%",
       position: "absolute",
-      top: 0,
+      top: "20%",
       left: 0
     }
 

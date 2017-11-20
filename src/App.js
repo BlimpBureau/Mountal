@@ -9,11 +9,11 @@ class App extends Component {
     return (
       <div className="App">
         <Blimp color="#280945"/>
-        <MountainRange erd={this.erd}/>
-        <MountainRange erd={this.erd}/>
-        <MountainRange erd={this.erd}/>
-        <MountainRange erd={this.erd}/>
-        <MountainRange erd={this.erd}/>
+        <MountainRange/>
+        <MountainRange/>
+        <MountainRange/>
+        <MountainRange/>
+        <MountainRange/>
       </div>
     );
   }

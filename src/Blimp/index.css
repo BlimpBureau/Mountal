@@ -1,7 +1,7 @@
 .blimpView {
   /*background-color: red;*/
   position: absolute;
-  top: 0;
+  top: -20%;
   left: 0;
   overflow: hidden;
   width: 100%;
@@ -36,9 +36,9 @@
       -ms-transform: translate3d(-100%, -50%, 0);
           transform: translate3d(-100%, -50%, 0);
 
-  -webkit-animation: travel 75s infinite linear;
-      -ms-animation: travel 75s infinite linear;
-          animation: travel 75s infinite linear;
+  -webkit-animation: travel 32.5s infinite linear;
+      -ms-animation: travel 32.5s infinite linear;
+          animation: travel 32.5s infinite linear;
 }
 
 .blimp__svg {
@@ -51,9 +51,9 @@
       -ms-transform: translate3d(0, -15%, 0) rotate(-5deg);
           transform: translate3d(0, -15%, 0) rotate(-5deg);
 
-  -webkit-animation: upDown 15s alternate infinite cubic-bezier(.6,0,.44,1);
-      -ms-animation: upDown 15s alternate infinite cubic-bezier(.6,0,.44,1);
-          animation: upDown 15s alternate infinite cubic-bezier(.6,0,.44,1);
+  -webkit-animation: upDown 7.5s alternate infinite cubic-bezier(.6,0,.44,1);
+      -ms-animation: upDown 7.5s alternate infinite cubic-bezier(.6,0,.44,1);
+          animation: upDown 7.5s alternate infinite cubic-bezier(.6,0,.44,1);
 
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none;   /* Chrome/Safari/Opera */
