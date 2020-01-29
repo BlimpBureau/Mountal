@@ -36,9 +36,14 @@
       -ms-transform: translate3d(-100%, -50%, 0);
           transform: translate3d(-100%, -50%, 0);
 
-  -webkit-animation: travel 32.5s infinite linear;
-      -ms-animation: travel 32.5s infinite linear;
-          animation: travel 32.5s infinite linear;
+  -webkit-animation: travel 61.9047619048s infinite linear;
+      -ms-animation: travel 61.9047619048s infinite linear;
+          animation: travel 61.9047619048s infinite linear;
+}
+
+.blimp--mirage {
+  -webkit-animation-delay: 30.9523809524s;
+  animation-delay: 30.9523809524s;
 }
 
 .blimp__svg {
@@ -84,16 +89,16 @@
 
 @keyframes travel {
   to {
-    -webkit-transform: translate3d(2000%, -50%, 0);
-        -ms-transform: translate3d(2000%, -50%, 0);
-            transform: translate3d(2000%, -50%, 0);
+    -webkit-transform: translate3d(3904.7619047619%, -50%, 0);
+        -ms-transform: translate3d(3904.7619047619%, -50%, 0);
+            transform: translate3d(3904.7619047619%, -50%, 0);
   };
 }
 
 @-webkit-keyframes travel {
   to {
-    -webkit-transform: translate3d(2000%, -50%, 0);
-        -ms-transform: translate3d(2000%, -50%, 0);
-            transform: translate3d(2000%, -50%, 0);
+    -webkit-transform: translate3d(3904.7619047619%, -50%, 0);
+        -ms-transform: translate3d(3904.7619047619%, -50%, 0);
+            transform: translate3d(3904.7619047619%, -50%, 0);
   };
 }
