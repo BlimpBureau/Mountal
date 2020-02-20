@@ -2,16 +2,16 @@
   /* CONIG */
 
   /* Width of Blimp relative screen (number percent of screen width) */
-  --blimp-width: 5;
+  --blimp-width: 10;
 
   /* Screen-widths per second */
-  --blimp-speed: calc(1/30);
+  --blimp-speed: calc(1/10);
 
   /* Frequency */
   --blimp-frequency: 4;
 
   /* Amplitude */
-  --blimp-amplitude: 30%;
+  --blimp-amplitude: 33%;
 
   /* Rotation */
   --blimp-rotation: 5deg;

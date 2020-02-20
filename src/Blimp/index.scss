@@ -1,0 +1,144 @@
+/* CONFIGURATION */
+
+/* Width of Blimp relative screen (number percent of screen width) */
+$blimp-width: 5%;
+
+/* Screen-widths per second */
+$blimp-speed: 1/30;
+
+/* Frequency */
+$blimp-frequency: 4;
+
+/* Amplitude */
+$blimp-amplitude: 33%;
+
+/* Rotation */
+$blimp-rotation: 5deg;
+
+/* CALCULATIONS - DON'T TOUCH! */
+
+/* Time to cover screen (edge to edge, excl exit) */
+$blimp-time: 1s / $blimp-speed;
+
+/* How many 'steps' the Blimp needs to make to cover screen (excluding exit step). I.e. how many Blimps can fit in the width of the screen? */
+$blimp-steps: 100% / $blimp-width;
+
+/* Mirage delay */
+$blimp-mirage-delay: $blimp-time;
+
+/* Distance (How much to transform x-axis) */
+$blimp-distance: 100% * (2 * ($blimp-steps - 1) + 1);
+
+/* Complete animation duration */
+$blimp-animation-duration: 2 * $blimp-time;
+
+/* upDown animation duration */
+$blimp-upDown-duration: $blimp-time / (2 * $blimp-frequency);
+
+/*********************************************/
+
+.blimpView {
+/*background-color: red;*/
+position: absolute;
+top: -20%;
+left: 0;
+overflow: hidden;
+width: 100%;
+height: 100%;
+}
+
+.blimp {
+/*background-color: green;*/
+position: absolute;
+width: $blimp-width;
+left: 50%;
+top: 50%;
+
+-webkit-transform: translate3d(-50%, -50%, 0);
+    -ms-transform: translate3d(-50%, -50%, 0);
+        transform: translate3d(-50%, -50%, 0);
+
+-webkit-touch-callout: none; /* iOS Safari */
+-webkit-user-select: none;   /* Chrome/Safari/Opera */
+-khtml-user-select: none;    /* Konqueror */
+-moz-user-select: none;      /* Firefox */
+-ms-user-select: none;       /* Internet Explorer/Edge */
+user-select: none;           /* Non-prefixed version, currently
+                                not supported by any browser */
+
+-webkit-tap-highlight-color:transparent; /* haxxor */
+}
+
+.blimp--travelling {
+left: 0;
+-webkit-transform: translate3d(-100%, -50%, 0);
+    -ms-transform: translate3d(-100%, -50%, 0);
+        transform: translate3d(-100%, -50%, 0);
+
+-webkit-animation: travel $blimp-animation-duration infinite linear;
+    -ms-animation: travel $blimp-animation-duration infinite linear;
+        animation: travel $blimp-animation-duration infinite linear;
+}
+
+.blimp--mirage {
+-webkit-animation-delay: $blimp-mirage-delay;
+-ms-animation-delay: $blimp-mirage-delay;
+animation-delay: $blimp-mirage-delay;
+}
+
+.blimp__svg {
+width: 100%;
+max-width: 100%;
+height: auto;
+fill: #2d112d;
+
+-webkit-transform: translate3d(0, -$blimp-amplitude/2, 0) rotate(-$blimp-rotation);
+    -ms-transform: translate3d(0, -$blimp-amplitude/2, 0) rotate(-$blimp-rotation);
+        transform: translate3d(0, -$blimp-amplitude/2, 0) rotate(-$blimp-rotation);
+
+-webkit-animation: upDown $blimp-upDown-duration alternate infinite cubic-bezier(.6,0,.44,1);
+    -ms-animation: upDown $blimp-upDown-duration alternate infinite cubic-bezier(.6,0,.44,1);
+        animation: upDown $blimp-upDown-duration alternate infinite cubic-bezier(.6,0,.44,1);
+
+-webkit-touch-callout: none; /* iOS Safari */
+-webkit-user-select: none;   /* Chrome/Safari/Opera */
+-khtml-user-select: none;    /* Konqueror */
+-moz-user-select: none;      /* Firefox */
+-ms-user-select: none;       /* Internet Explorer/Edge */
+user-select: none;           /* Non-prefixed version, currently
+                                not supported by any browser */
+
+-webkit-tap-highlight-color:transparent; /* haxxor */
+}
+
+@keyframes upDown {
+to {
+    -webkit-transform: translate3d(0, $blimp-amplitude, 0) rotate($blimp-rotation);
+        -ms-transform: translate3d(0, $blimp-amplitude, 0) rotate($blimp-rotation);
+            transform: translate3d(0, $blimp-amplitude, 0) rotate($blimp-rotation);
+}
+}
+
+@-webkit-keyframes upDown {
+to {
+    -webkit-transform: translate3d(0, $blimp-amplitude, 0) rotate($blimp-rotation);
+        -ms-transform: translate3d(0, $blimp-amplitude, 0) rotate($blimp-rotation);
+            transform: translate3d(0, $blimp-amplitude, 0) rotate($blimp-rotation);
+}
+}
+
+@keyframes travel {
+to {
+    -webkit-transform: translate3d($blimp-distance, -50%, 0);
+        -ms-transform: translate3d($blimp-distance, -50%, 0);
+            transform: translate3d($blimp-distance, -50%, 0);
+};
+}
+
+@-webkit-keyframes travel {
+to {
+    -webkit-transform: translate3d($blimp-distance, -50%, 0);
+        -ms-transform: translate3d($blimp-distance, -50%, 0);
+            transform: translate3d($blimp-distance, -50%, 0);
+};
+}

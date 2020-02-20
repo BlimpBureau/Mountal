@@ -5,6 +5,7 @@
   "dependencies": {
     "element-resize-detector": "^1.1.12",
     "gaussian": "^1.1.0",
+    "node-sass": "^4.13.1",
     "prop-types": "^15.6.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
